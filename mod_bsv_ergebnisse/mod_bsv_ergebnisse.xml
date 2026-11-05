@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+    <name>MOD_BSV_ERGEBNISSE</name>
+    <author>Berliner Schachverband</author>
+    <creationDate>2026-11</creationDate>
+    <copyright>(C) 2026 Berliner Schachverband</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>1.1.0</version>
+    <description>MOD_BSV_ERGEBNISSE_XML_DESCRIPTION</description>
+    <namespace path="src">Bsv\Module\Ergebnisse</namespace>
+
+    <files>
+        <folder module="mod_bsv_ergebnisse">services</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+
+    <languages folder="language">
+        <language tag="de-DE">de-DE/mod_bsv_ergebnisse.ini</language>
+        <language tag="de-DE">de-DE/mod_bsv_ergebnisse.sys.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addfieldprefix="Bsv\Module\Ergebnisse\Site\Field">
+                <field name="liga" type="Liga" label="MOD_BSV_ERGEBNISSE_FIELD_LIGA_LABEL"
+                       description="MOD_BSV_ERGEBNISSE_FIELD_LIGA_DESC" required="true" />
+                <field name="anzeige" type="list" label="MOD_BSV_ERGEBNISSE_FIELD_ANZEIGE_LABEL" default="tabelle">
+                    <option value="tabelle">MOD_BSV_ERGEBNISSE_ANZEIGE_TABELLE</option>
+                    <option value="runde">MOD_BSV_ERGEBNISSE_ANZEIGE_RUNDE</option>
+                </field>
+                <field name="runde" type="number" label="MOD_BSV_ERGEBNISSE_FIELD_RUNDE_LABEL" default="1" min="1"
+                       filter="integer" showon="anzeige:runde" />
+                <field name="dg" type="number" label="MOD_BSV_ERGEBNISSE_FIELD_DG_LABEL"
+                       description="MOD_BSV_ERGEBNISSE_FIELD_DG_DESC" default="1" min="1" filter="integer" showon="anzeige:runde" />
+                <field name="einzel" type="radio" label="MOD_BSV_ERGEBNISSE_FIELD_EINZEL_LABEL" default="0"
+                       layout="joomla.form.field.radio.switcher" showon="anzeige:runde">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="highlight" type="text" label="MOD_BSV_ERGEBNISSE_FIELD_HIGHLIGHT_LABEL"
+                       description="MOD_BSV_ERGEBNISSE_FIELD_HIGHLIGHT_DESC" default="" filter="string" />
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" validate="moduleLayout" />
+                <field name="moduleclass_sfx" type="textarea" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" rows="3" validate="CssIdentifier" />
+                <field name="cache_ttl" type="number" label="MOD_BSV_ERGEBNISSE_FIELD_TTL_LABEL"
+                       description="MOD_BSV_ERGEBNISSE_FIELD_TTL_DESC" default="60" min="10" filter="integer" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

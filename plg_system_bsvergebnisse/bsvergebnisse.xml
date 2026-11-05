@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade">
+    <name>PLG_SYSTEM_BSVERGEBNISSE</name>
+    <author>Berliner Schachverband</author>
+    <creationDate>2026-11</creationDate>
+    <copyright>(C) 2026 Berliner Schachverband</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>1.1.0</version>
+    <description>PLG_SYSTEM_BSVERGEBNISSE_XML_DESCRIPTION</description>
+    <namespace path="src">Bsv\Plugin\System\Bsvergebnisse</namespace>
+
+    <files>
+        <folder plugin="bsvergebnisse">services</folder>
+        <folder>src</folder>
+    </files>
+
+    <languages folder="language">
+        <language tag="de-DE">de-DE/plg_system_bsvergebnisse.ini</language>
+        <language tag="de-DE">de-DE/plg_system_bsvergebnisse.sys.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="base_url" type="text" label="PLG_SYSTEM_BSVERGEBNISSE_BASEURL_LABEL"
+                       description="PLG_SYSTEM_BSVERGEBNISSE_BASEURL_DESC" default="" filter="string" />
+                <field name="api_key" type="password" label="PLG_SYSTEM_BSVERGEBNISSE_APIKEY_LABEL"
+                       description="PLG_SYSTEM_BSVERGEBNISSE_APIKEY_DESC" default="" filter="string" />
+                <field name="allow_http" type="radio" label="PLG_SYSTEM_BSVERGEBNISSE_HTTP_LABEL"
+                       description="PLG_SYSTEM_BSVERGEBNISSE_HTTP_DESC" default="0"
+                       layout="joomla.form.field.radio.switcher">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
